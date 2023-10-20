@@ -5,9 +5,10 @@
 module.exports = (logSources, printer) => {
   const allLogs = [];
 
+  let log;
+
   logSources.forEach((logSource) => {
-    while (!logSource.drained) {
-      const log = logSource.pop();
+    while ((log = logSource.pop())) {
       if (log) allLogs.push(log);
     }
   });
