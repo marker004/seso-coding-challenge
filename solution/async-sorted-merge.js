@@ -12,7 +12,7 @@ module.exports = (logSources, printer) => {
     while (logSources.length) {
       if (!logSources[0].drained) {
         printer.print(logSources[0].last);
-        logSources[0].pop();
+        logSources[0].popAsync();
 
         settleDownYall(logSources, logSourceSortingCriterion);
       } else {
